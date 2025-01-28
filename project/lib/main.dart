@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -69,34 +70,19 @@ class _MainMenuState extends State<MainMenu> {
         selectedItemColor: Colors.deepPurple,
         onTap: _onItemTapped,
       ),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              FlutterLogo(size: 48),
-              Text("หอพัก ICT", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))
-            ],
-          ),
-          SizedBox(height: 32),
-
-          Text("ระบบจัดการหอพักที่สะดวกและครบวงจร",textAlign: TextAlign.center,style: TextStyle(fontSize: 16,)),
-          SizedBox(height: 48),
-
-        ],
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            ListTile(
+              title: Text('Menu 1'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('Menu 2'),
+              onTap: () {},
+            ),
+          ],
+        ),
       ),
     );
   }
