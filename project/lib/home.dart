@@ -1,31 +1,4 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-
-class Room {
-  final String name;
-  final String price;
-
-  Room({required this.name, required this.price});
-
-  factory Room.fromJson(Map<String, dynamic> json) {
-    return Room(
-      name: json['name'],
-      price: json['price'],
-    );
-  }
-}
-
-Future<List<Room>> fetchRooms() async {
-  final response = await http.get(Uri.parse('http://localhost:3000/rooms'));
-
-  if (response.statusCode == 200) {
-    List jsonResponse = json.decode(response.body);
-    return jsonResponse.map((room) => Room.fromJson(room)).toList();
-  } else {
-    throw Exception('Failed to load rooms');
-  }
-}
 
 List<Map<String, String>> rooms = [
   {'name': 'ห้องพัก A1', 'price': '3,500 บาท/เดือน'},
@@ -83,8 +56,8 @@ class HomePage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  height: 128,
-                  width: 224,
+                  height: 160,
+                  width: 240,
                   padding: EdgeInsets.all(12),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

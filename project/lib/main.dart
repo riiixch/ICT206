@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project/home.dart';
+import 'package:project/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'หอพัก ICT',
+      title: 'ICT Apartment',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -33,8 +34,7 @@ class _MainMenuState extends State<MainMenu> {
 
   static const List<Widget> _pages = <Widget>[
     HomePage(),
-    InfoPage(),
-    ProfilePage(),
+    LoginPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -47,8 +47,14 @@ class _MainMenuState extends State<MainMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('หอพัก ICT'),
+        centerTitle: true,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text("ICT Apartment", style: TextStyle(fontWeight: FontWeight.bold))
+          ],
+        ),
       ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -59,68 +65,21 @@ class _MainMenuState extends State<MainMenu> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.info),
-            label: 'ข้อมูล',
+            label: 'ห้องพัก',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'โปรไฟล์',
+            icon: Icon(Icons.notifications),
+            label: 'แจ้งเตือน',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu),
+            label: 'เมนูเพิ่มเติม',
           ),
         ],
         currentIndex: _selectedIndex,
+        unselectedItemColor: Colors.black,
         selectedItemColor: Colors.deepPurple,
         onTap: _onItemTapped,
-      ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            ListTile(
-              title: Text('Menu 1'),
-              onTap: () {},
-            ),
-            ListTile(
-              title: Text('Menu 2'),
-              onTap: () {},
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class InfoPage extends StatelessWidget {
-  const InfoPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Text(
-            'ข้อมูลเกี่ยวกับหอพัก',
-            style: TextStyle(fontSize: 24),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Text(
-            'โปรไฟล์ผู้ใช้',
-            style: TextStyle(fontSize: 24),
-          ),
-        ],
       ),
     );
   }
